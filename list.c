@@ -7,13 +7,13 @@ typedef int Status;
 typedef int ElemType;
 
 //
-/*
+
 typedef struct {
     ElemType *elem; // Memory space base address
     int length;
     int listSize;
 }SqList;
-*/
+
 
 //
 typedef struct LNode {
@@ -41,6 +41,7 @@ typedef struct LNode {
 
 
 //
+
 /*
 Status InitList_Sq(SqList *L) {
 //
@@ -54,7 +55,30 @@ Status InitList_Sq(SqList *L) {
 
 
 
+/*
+//
+void createList(SqList *L,int length){
+    printf("we use InitList_Sq function to create a Sq_list\n");
+    L->length = length;
 
+
+    for(int i = 0;i < L->length;i++){
+        printf("please enter L[%d]\n",i);
+        scanf("%d",&L->elem[i]);
+    }
+}
+
+//
+void display_SqList(SqList *L){
+    printf("the elem of SqList\n");
+    for(int i = 0;i < L->length;i++){
+        printf("%4d",L->elem[i]);
+    }
+    printf("\n");
+}
+
+ */
+/* SqList creation*/
 
 
 
@@ -115,31 +139,6 @@ int LocateElem_Sq(SqList *L, ElemType e,
 
 
 
-/*
-//
-void createList(SqList *L,int length){
-    printf("we use InitList_Sq function to create a Sq_list\n");
-    L->length = length;
-
-
-    for(int i = 0;i < L->length;i++){
-        printf("please enter L[%d]\n",i);
-        scanf("%d",&L->elem[i]);
-    }
-}
-
-//
-void display_SqList(SqList *L){
-    printf("the elem of SqList\n");
-    for(int i = 0;i < L->length;i++){
-        printf("%4d",L->elem[i]);
-    }
-    printf("\n");
-}
-
-*/ /* SqList creation*/
-
-
 
 
 
@@ -147,11 +146,10 @@ void display_SqList(SqList *L){
 
 
 //Fail Init function
-LinkList Init_LNode(LinkList L){
-    L = (LinkList)malloc(sizeof(LNode));
+void Init_LNode(LinkList L){
     if (!L) exit(ERROR);
+    L->data = 0;
     L->next = NULL;
-    return L;
 }
 
 void create_LNode(LinkList L, int n){
@@ -173,7 +171,8 @@ void create_LNode(LinkList L, int n){
 
 
 
-/*
+
+
 //
 LinkList CreateList_L(LinkList L, int n){
     //
@@ -191,7 +190,7 @@ LinkList CreateList_L(LinkList L, int n){
     }
     return L; // the function type is LinkList type
 }
-*/
+
 
 void display_LinkList(LinkList L){
     printf("the elem of LinkList\n");
@@ -209,13 +208,31 @@ void display_LinkList(LinkList L){
 
 // main function
 int main() {
+
+
     /*
     SqList List;
     InitList_Sq(&List);
     createList(&List,3);
     display_SqList(&List);
+    printf("%d",List.listSize);
+
+    SqList List4test;
+    InitList_Sq(&List4test);
+    createList(&List4test,4);
+    display_SqList(&List4test);
+    printf("%d",List4test.elem[4]);
     return OK;
     */
+
+
+
+    LNode L4test;
+    Init_LNode(&L4test);
+    create_LNode(&L4test, 5);
+    display_LinkList(&L4test);
+    printf("%4d",L4test.next->data);
+    return OK;
 
     /*
     LNode L;
@@ -226,7 +243,7 @@ int main() {
     return OK;
     */
 
-
+    /*
     LNode List;
     List.next = NULL;
     //LinkList L;
@@ -234,5 +251,6 @@ int main() {
     display_LinkList(&List);
     printf("%d",List.data);
     return OK;
+    */
 
 }
